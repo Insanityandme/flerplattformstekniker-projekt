@@ -1,9 +1,16 @@
 <script setup lang="ts">
-const emit = defineEmits(['generatedUrl']);
+const url = ref('');
+const emit = defineEmits(['generatedUrlEvent']);
 
-function sendGeneratedUrl() {
-  emit('generatedUrl', 'hello from child component');
+function handleSubmit() {
+  shortenedUrl.value = `short.ly/${url.value.slice(-6)}`;
+
+  emit('generatedUrlEvent', {
+    link: url.value,
+    shortLink: shortenedUrl.value,
+  });
 }
+
 </script>
 
 <template>
@@ -13,7 +20,7 @@ function sendGeneratedUrl() {
     <label>
       Original URL:
       <input
-        v-model="originalUrl"
+        v-model="url"
         type="url"
         placeholder="Paste your URL here"
         required
@@ -22,6 +29,7 @@ function sendGeneratedUrl() {
 
     <button type="submit">Generate Short URL</button>
 
+    <!-- TODO: Missing this for now -->
     <p v-if="shortenedUrl">{{ shortenedUrl }}</p>
   </form>
 </template>
