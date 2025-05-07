@@ -9,9 +9,15 @@ const props = defineProps<{
 <template>
   <ul>
     <li v-for="(link, index) in props.links" :key="index">
-      <a :href="link.shortLink">{{ link.shortLink }} ({{ link.longLink }})</a>
+      <a :href="link.shortLink" target="_blank">{{ link.shortLink }} ({{ link.longLink }})</a>
     </li>
   </ul>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+li {
+  word-wrap: break-word;
+}
+
+</style>

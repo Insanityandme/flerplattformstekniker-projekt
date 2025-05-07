@@ -1,6 +1,19 @@
 @import './base.css';
 
-.section-url-shortener,
-.section-url-history {
-  display: flex;
+@media (max-width: 880px) {
+  .container {
+    width: 80%;
+  }
+}
+
+@media (max-width: 650px) {
+  .container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 450px) {
+  .container {
+    width: 90%;
+  }
 }
