@@ -1,6 +1,6 @@
 @import './base.css';
 
-.section-url-shortener, .section-url-history {
+.section-url-shortener,
+.section-url-history {
   display: flex;
 }
-

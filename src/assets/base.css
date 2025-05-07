@@ -9,9 +9,9 @@
   --white: #ffffff;
 
   /* font families */
-  --main: "Lato", sans-serif;
-  --heading: "Josefin Sans", sans-serif;
-  --mono: "Fira Mono", monospace;
+  --main: 'Lato', sans-serif;
+  --heading: 'Josefin Sans', sans-serif;
+  --mono: 'Fira Mono', monospace;
 
   /* type scale */
   --base-size: 1.2rem;
@@ -32,18 +32,18 @@ html {
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 /* h/t Scott O'Hara https://css-tricks.com/inclusively-hidden/ */
 .sr-only:not(:focus):not(:active) {
-    clip: rect(0, 0, 0, 0);
-    clip-path: inset(50%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
 body {
@@ -54,7 +54,12 @@ body {
   padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--heading);
   text-transform: uppercase;
 }

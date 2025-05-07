@@ -3,13 +3,11 @@ import UrlShortener from './components/UrlShortener.vue'
 </script>
 
 <template>
-  <header>
-  </header>
+  <header></header>
   <main>
-    <UrlShortener/>
+    <UrlShortener />
   </main>
   <footer>
-    <div class="container">
-    </div>
+    <div class="container"></div>
   </footer>
 </template>
