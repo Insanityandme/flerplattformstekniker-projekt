@@ -1,19 +1,20 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import SavedLinks from './SavedLinks.vue'
-import UrlCreator from './UrlCreator.vue'
 import UrlShortener from './UrlShortener.vue'
 import type { urlData } from '../types/UrlTypes.ts'
 
 const savedLinks = ref<urlData[]>([])
 
 const handleCreateLink = (link: urlData) => {
-  savedLinks.value.push(link)
-  localStorage.setItem('savedLinks', JSON.stringify(savedLinks))
+  savedLinks.value.unshift(link)
+  localStorage.setItem('savedLinks', JSON.stringify(savedLinks.value))
 }
 
 onMounted(() => {
   const saved = localStorage.getItem('savedLinks')
+  if (!saved) return
+
   const links = JSON.parse(saved)
   savedLinks.value = links
 })

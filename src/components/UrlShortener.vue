@@ -8,6 +8,8 @@ const urlLinks = ref<urlData>({
   longLink: '',
 })
 
+const emit = defineEmits(['handleCreateLink'])
+
 const handleURLShorten = (urlData: urlData) => {
   urlLinks.value = urlData
   emit('handleCreateLink', urlData)
