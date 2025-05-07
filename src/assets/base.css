@@ -1,7 +1,62 @@
 /* Base */
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  /* 4. Add accessible line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}
+
 :root {
   /* colors */
-  --black: #000501;
+  --black: #001201;
   --tan: #b6b57b;
   --green: #31b28a;
   --lightgreen: #8cdfc5;
@@ -52,6 +107,7 @@ body {
   font-size: var(--base-size);
   margin: 0;
   padding: 0;
+  background-color: var(--green);
 }
 
 h1,
@@ -61,7 +117,6 @@ h4,
 h5,
 h6 {
   font-family: var(--heading);
-  text-transform: uppercase;
 }
 
 h1 {
@@ -126,9 +181,12 @@ figure {
   margin: 0;
 }
 .container {
-  width: 450px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  max-width: 850px;
+  margin: 1rem auto;
+  background-color: var(--white);
+  color: var(--black);
+  padding: 1rem;
+  border-radius: 5px;
 }
 .button {
   display: inline-block; /* as wide as the content but can add padding/margin */
@@ -146,4 +204,22 @@ figure {
 
 .button:hover {
   background-color: var(--tan);
+}
+
+@media (max-width: 880px) {
+  .container {
+    max-width: 650px;
+  }
+}
+
+@media (max-width: 650px) {
+  .container {
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 450px) {
+  .container {
+    width: 100%;
+  }
 }

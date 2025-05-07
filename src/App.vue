@@ -7,7 +7,4 @@ import LinkApp from './components/LinkApp.vue'
   <main>
     <LinkApp />
   </main>
-  <footer>
-    <div class="container"></div>
-  </footer>
 </template>
