@@ -1,86 +1,149 @@
-/* color palette from <https://github.com/vuejs/theme> */
+/* Base */
 :root {
-  --vt-c-white: #ffffff;
-  --vt-c-white-soft: #f8f8f8;
-  --vt-c-white-mute: #f2f2f2;
+  /* colors */
+  --black: #000501;
+  --tan: #b6b57b;
+  --green: #31b28a;
+  --lightgreen: #8cdfc5;
+  --red: #ff4404;
+  --white: #ffffff;
 
-  --vt-c-black: #181818;
-  --vt-c-black-soft: #222222;
-  --vt-c-black-mute: #282828;
+  /* font families */
+  --main: 'Lato', sans-serif;
+  --heading: 'Josefin Sans', sans-serif;
+  --mono: 'Fira Mono', monospace;
 
-  --vt-c-indigo: #2c3e50;
-
-  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
-  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
-  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
-  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
-
-  --vt-c-text-light-1: var(--vt-c-indigo);
-  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
-  --vt-c-text-dark-1: var(--vt-c-white);
-  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+  /* type scale */
+  --base-size: 1.2rem;
+  --scale: 1.25; /* 1.25 is also common */
+  --h1: calc(var(--h2) * var(--scale));
+  --h2: calc(var(--h3) * var(--scale));
+  --h3: calc(var(--h4) * var(--scale));
+  --h4: calc(var(--h5) * var(--scale));
+  --h5: calc(var(--h6) * var(--scale));
+  --h6: var(--base-size);
+  --small: calc(var(--base-size) / var(--scale));
 }
 
-/* semantic color variables for this project */
-:root {
-  --color-background: var(--vt-c-white);
-  --color-background-soft: var(--vt-c-white-soft);
-  --color-background-mute: var(--vt-c-white-mute);
-
-  --color-border: var(--vt-c-divider-light-2);
-  --color-border-hover: var(--vt-c-divider-light-1);
-
-  --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
-
-  --section-gap: 160px;
+/* border box model: https://css-tricks.com/box-sizing/ */
+html {
+  box-sizing: border-box;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
-
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
-
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
-  }
-}
-
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-  margin: 0;
-  font-weight: normal;
+  box-sizing: inherit;
+}
+
+/* h/t Scott O'Hara https://css-tricks.com/inclusively-hidden/ */
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
 body {
-  min-height: 100vh;
-  color: var(--color-text);
-  background: var(--color-background);
-  transition:
-    color 0.5s,
-    background-color 0.5s;
-  line-height: 1.6;
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
-    sans-serif;
-  font-size: 15px;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--main);
+  line-height: 1.5;
+  font-size: var(--base-size);
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading);
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: var(--h1);
+}
+h2 {
+  font-size: var(--h2);
+}
+h3 {
+  font-size: var(--h3);
+}
+h4 {
+  font-size: var(--h4);
+}
+h5 {
+  font-size: var(--h5);
+}
+h6 {
+  font-size: var(--h6);
+}
+.mono {
+  font-family: var(--mono);
+}
+
+.colors {
+  display: flex;
+  gap: 20px;
+}
+.colors > * {
+  width: 50px;
+  height: 50px;
+}
+.black {
+  background-color: var(--black);
+}
+.white {
+  background-color: var(--white);
+}
+.tan {
+  background-color: var(--tan);
+}
+.green {
+  background-color: var(--green);
+}
+.lightgreen {
+  background-color: var(--lightgreen);
+}
+.red {
+  background-color: var(--red);
+}
+a {
+  color: var(--green);
+}
+a:hover {
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+}
+figure {
+  padding: 0;
+  margin: 0;
+}
+.container {
+  width: 450px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.button {
+  display: inline-block; /* as wide as the content but can add padding/margin */
+  background-color: var(--green);
+  color: var(--black);
+  padding: 1rem 0.8rem 0.8rem 0.8rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-family: var(--heading);
+  font-size: var(--small);
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.button:hover {
+  background-color: var(--tan);
 }

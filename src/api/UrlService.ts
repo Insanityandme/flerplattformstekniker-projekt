@@ -1,9 +1,6 @@
 import type { urlResponse } from '@/types/UrlTypes'
 
-export async function createShortUrl(
-  longLink: string,
-  linkSuffix?: string,
-): Promise<urlResponse> {
+export async function createShortUrl(longLink: string, linkSuffix?: string): Promise<urlResponse> {
   const url = 'https://api.tinyurl.com/create'
   const token = import.meta.env.VITE_TINYURL_TOKEN
 
