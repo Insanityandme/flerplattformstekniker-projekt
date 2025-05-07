@@ -1,20 +1,28 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, Ref } from 'vue'
+import { createShortUrl } from '../api/UrlService.ts'
+import { urlResponse, urlData, urlError } from '../types/UrlTypes.ts'
+
+const props = defineProps<{
+  urlLinks: Ref<urlData>
+}>()
 
 const url = ref('');
-const shortenedUrl = ref('');
 
-const emit = defineEmits(['generatedUrlEvent']);
+async function handleSubmit() {
+  const response : urlResponse = await createShortUrl(url.value);
 
-function handleSubmit() {
-  shortenedUrl.value = `short.ly/${url.value.slice(-6)}`;
+  if (!response.ok) {
+    const error : urlError = response.error;
+    console.log("LOG: " + error.code);
+    console.log("LOG: " + error.errors);
+  }
 
-  emit('generatedUrlEvent', {
-    link: url.value,
-    shortLink: shortenedUrl.value,
-  });
+  console.log(props.urlLinks);
+
+  props.urlLinks.value.shortLink = response.data.shortLink;
+  props.urlLinks.value.longLink = url.value;
 }
-
 </script>
 
 <template>
@@ -33,8 +41,7 @@ function handleSubmit() {
 
     <button type="submit">Generate Short URL</button>
 
-    <!-- TODO: Missing this for now -->
-    <p v-if="shortenedUrl">{{ shortenedUrl }}</p>
+    <p v-if="props.urlLinks.shortLink">{{ props.urlLinks.shortLink }}</p>
   </form>
 </template>
 

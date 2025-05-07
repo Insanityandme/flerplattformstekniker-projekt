@@ -1,18 +1,19 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { urlData } from '../types/UrlTypes.ts'
 import UrlCreator from './UrlCreator.vue'
 
-const url = ref('')
+const urlLinks = ref<urlData>({
+  shortLink: '',
+  longLink: ''
+});
 
-function handleGeneratedUrl(payload) {
-  url.value = payload
-}
 </script>
 
 <template>
   <section class="section-url-shortener">
     <div class="container">
-      <UrlCreator @generatedUrl="handleGeneratedUrl" />
+      <UrlCreator :urlLinks="urlLinks" />
     </div>
   </section>
   <section class="section-url-history">
