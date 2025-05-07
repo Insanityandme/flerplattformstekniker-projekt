@@ -11,8 +11,8 @@ type Link = {
 }
 
 const handleCreateLink = (link: Link) => {
-  savedLinks.value.push(link);
-  localStorage.setItem("savedLinks", JSON.stringify(savedLinks))
+  savedLinks.value.push(link)
+  localStorage.setItem('savedLinks', JSON.stringify(savedLinks))
 }
 
 onMounted(() => {
