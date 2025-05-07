@@ -7,14 +7,11 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="container">
-    <h3>My shortened links</h3>
-    <ul>
-      <li v-for="(link, index) in props.links" :key="index">
-        <a :href="link.shortLink">{{ link.shortLink }} ({{ link.longLink }})</a>
-      </li>
-    </ul>
-  </div>
+  <ul>
+    <li v-for="(link, index) in props.links" :key="index">
+      <a :href="link.shortLink">{{ link.shortLink }} ({{ link.longLink }})</a>
+    </li>
+  </ul>
 </template>
 
 <style scoped></style>

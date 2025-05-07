@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import UrlShortener from './components/UrlShortener.vue'
+import LinkApp from './components/LinkApp.vue'
 </script>
 
 <template>
   <header></header>
   <main>
-    <UrlShortener />
+    <LinkApp />
   </main>
   <footer>
     <div class="container"></div>

@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue'
 import SavedLinks from './SavedLinks.vue'
 import UrlCreator from './UrlCreator.vue'
+import UrlShortener from './UrlShortener.vue'
 import type { urlData } from '../types/UrlTypes.ts'
 
 const savedLinks = ref<urlData[]>([])
@@ -20,8 +21,12 @@ onMounted(() => {
 
 <template>
   <div class="container">
-    <UrlCreator @onCreateLink="handleCreateLink" />
-    <SavedLinks :links="savedLinks" />
+    <section class="section-url-shortener">
+      <UrlShortener @handleCreateLink="handleCreateLink" />
+    </section>
+    <section class="section-url-history">
+      <SavedLinks :links="savedLinks" />
+    </section>
   </div>
 </template>
 

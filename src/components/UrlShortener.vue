@@ -10,22 +10,14 @@ const urlLinks = ref<urlData>({
 
 const handleURLShorten = (urlData: urlData) => {
   urlLinks.value = urlData
+  emit('handleCreateLink', urlData)
 }
 </script>
 
 <template>
-  <section class="section-url-shortener">
-    <div class="container">
-      <UrlCreator @handleURLShorten="handleURLShorten" />
+  <UrlCreator @handleURLShorten="handleURLShorten" />
 
-      <p v-if="urlLinks && urlLinks.longLink && urlLinks.shortLink">
-        {{ urlLinks.shortLink }} - {{ urlLinks.longLink }}
-      </p>
-    </div>
-  </section>
-  <section class="section-url-history">
-    <div class="container">
-      <!-- JOHANNES: Add component in here! -->
-    </div>
-  </section>
+  <p v-if="urlLinks && urlLinks.longLink && urlLinks.shortLink">
+    {{ urlLinks.shortLink }} - {{ urlLinks.longLink }}
+  </p>
 </template>
