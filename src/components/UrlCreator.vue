@@ -1,5 +1,9 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
 const url = ref('');
+const shortenedUrl = ref('');
+
 const emit = defineEmits(['generatedUrlEvent']);
 
 function handleSubmit() {
