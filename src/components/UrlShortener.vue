@@ -15,9 +15,11 @@ const handleURLShorten = (urlData: urlData) => {
 </script>
 
 <template>
-  <UrlCreator @handleURLShorten="handleURLShorten" />
+  <div class="container">
+    <UrlCreator @handleURLShorten="handleURLShorten" />
 
-  <p v-if="urlLinks && urlLinks.longLink && urlLinks.shortLink">
-    {{ urlLinks.shortLink }} - {{ urlLinks.longLink }}
-  </p>
+    <p v-if="urlLinks && urlLinks.longLink && urlLinks.shortLink">
+      {{ urlLinks.shortLink }} - {{ urlLinks.longLink }}
+    </p>
+  </div>
 </template>
