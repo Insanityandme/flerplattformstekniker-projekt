@@ -1,47 +1,40 @@
 <script setup lang="ts">
-import { ref, Ref } from 'vue'
+import { ref } from 'vue'
 import { createShortUrl } from '../api/UrlService.ts'
-import { urlResponse, urlData, urlError } from '../types/UrlTypes.ts'
+import type { urlResponse, urlError } from '../types/UrlTypes.ts'
 
-const props = defineProps<{
-  urlLinks: Ref<urlData>
-}>()
+const emit = defineEmits(['handleURLShorten'])
 
-const url = ref('');
+const url = ref('')
 
 async function handleSubmit() {
-  const response : urlResponse = await createShortUrl(url.value);
+  const response: urlResponse = await createShortUrl(url.value)
+  console.log(response)
 
   if (!response.ok) {
-    const error : urlError = response.error;
-    console.log("LOG: " + error.code);
-    console.log("LOG: " + error.errors);
+    const error: urlError | undefined = response.error
+    console.error('LOG: ' + error?.code)
+    console.error('LOG: ' + error?.errors)
+    return
   }
 
-  console.log(props.urlLinks);
-
-  props.urlLinks.value.shortLink = response.data.shortLink;
-  props.urlLinks.value.longLink = url.value;
+  if (!response.data) {
+    return
+  }
+  emit('handleURLShorten', response.data)
 }
 </script>
 
 <template>
- <form @submit.prevent="handleSubmit" class="url-form">
+  <form @submit.prevent="handleSubmit" class="url-form">
     <h2>Shorten a URL</h2>
 
     <label>
       Original URL:
-      <input
-        v-model="url"
-        type="url"
-        placeholder="Paste your URL here"
-        required
-      />
+      <input v-model="url" type="url" placeholder="Paste your URL here" required />
     </label>
 
     <button type="submit">Generate Short URL</button>
-
-    <p v-if="props.urlLinks.shortLink">{{ props.urlLinks.shortLink }}</p>
   </form>
 </template>
 
