@@ -2,15 +2,11 @@
 import { ref, onMounted } from 'vue'
 import SavedLinks from './SavedLinks.vue'
 import UrlCreator from './UrlCreator.vue'
+import type { urlData } from '../types/UrlTypes.ts'
 
-const savedLinks = ref<Link[]>([])
+const savedLinks = ref<urlData[]>([])
 
-type Link = {
-  link: string
-  shortLink: string
-}
-
-const handleCreateLink = (link: Link) => {
+const handleCreateLink = (link: urlData) => {
   savedLinks.value.push(link)
   localStorage.setItem('savedLinks', JSON.stringify(savedLinks))
 }

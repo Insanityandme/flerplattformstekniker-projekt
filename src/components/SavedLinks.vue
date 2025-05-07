@@ -1,11 +1,8 @@
 <script setup lang="ts">
-type Link = {
-  link: string
-  shortLink: string
-}
+import type { urlData } from '../types/UrlTypes.ts'
 
 const props = defineProps<{
-  links: Link[]
+  links: urlData[]
 }>()
 </script>
 
@@ -14,7 +11,7 @@ const props = defineProps<{
     <h3>My shortened links</h3>
     <ul>
       <li v-for="(link, index) in props.links" :key="index">
-        <a :href="link.shortLink">{{ link.shortLink }} ({{ link.link }})</a>
+        <a :href="link.shortLink">{{ link.shortLink }} ({{ link.longLink }})</a>
       </li>
     </ul>
   </div>
