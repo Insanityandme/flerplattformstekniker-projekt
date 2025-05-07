@@ -1,5 +1,5 @@
 /* Base */
-:root {/*{{{*/
+:root {
   /* colors */
   --black: #000501;
   --tan: #b6b57b;
@@ -121,7 +121,7 @@ figure {
   margin: 0;
 }
 .container {
-  max-width: 1000px;
+  width: 450px;
   margin: 0 auto;
   padding: 0 1rem;
 }

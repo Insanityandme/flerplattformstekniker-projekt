@@ -39,18 +39,7 @@ async function handleSubmit() {
 </template>
 
 <style scoped>
-h3 {
-  font-size: 1.2rem;
-}
-
-h1 {
-  text-align: center;
-}
-
 .url-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
   max-width: 400px;
 }
 
