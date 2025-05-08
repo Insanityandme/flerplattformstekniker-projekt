@@ -58,7 +58,11 @@ We chose Vue as the framework instead of React, primarily because we had signifi
 Source: https://hackr.io/blog/react-vs-vue
 
 ### Vue vs Angular
+Angular is a JavaScript framework maintained by Google. It is an older but proven framework based on the Model View Controller (MVC) pattern, with projects written in TypeScript. Angular has several built-in features. For example, it includes a router for building single-page applications (SPA). Another feature is the built-in testing framework Jasmine. With this testing framework, one can create unit and integration tests for the application. In light of this, Angular can be considered a good choice for larger projects where testing and adherence to various requirements are important.
 
+Vue, compared to Angular, has less built-in functionality and relies more on adding external modules to increase functionality, which Angular largely includes out of the box. However, these features and the MVC pattern in Angular contribute to greater overhead compared to Vue. Additionally, the learning curve is steeper with Angular, as it has more of its own syntax, whereas Vue stays closer to HTML, CSS, and JavaScript with its use of templates. Since this is a smaller project, we do not need the many features that Angular provides. Therefore, we believe that choosing Vue is more advantageous. This is because Vue offers a simpler syntax, a smaller learning curve, and a program size that is not as large as Angular.
+
+Source: https://www.orientsoftware.com/blog/angular-vs-vue/
 
 ## Project Setup
 
