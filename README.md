@@ -49,7 +49,7 @@ The application uses LocalStorage to save previously shortened links locally in 
 ## Framework comparisons 
 ### Vue vs React
 
-Vue uses HTML templating to integrate JavaScript into HTML. Vue is similar to traditional web development, where CSS, HTML, and JavaScript are separated. React, on the other hand, uses JavaScript Expressions (JSX) to include HTML within JavaScript files. Both Vue and React have components with a lifecycle that allows the application to re-render only the parts that need to be updated when a component changes. According to the author, Vue does this in an easier and better way.
+Vue uses HTML templating to integrate JavaScript into HTML. Vue is similar to traditional web development, where CSS, HTML, and JavaScript are separated. React, on the other hand, uses JavaScript Expressions (JSX) to include HTML within JavaScript files. Both Vue and React have components with a lifecycle that allows the application to re-render only the parts that need to be updated when a component changes. It can, however, be argued that Vue does this in an easier way.
 
 React is actually not a framework, even though many refer to it as such. React is a library, unlike Vue, which is a complete framework. This means that React itself does not provide everything you need to build a full application, such as routing and state management. These require external libraries to be added. Vue, on the other hand, includes all the necessary features, and no external libraries are needed unless you want to build more complex functionality.
 
