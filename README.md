@@ -1,14 +1,19 @@
 <div align="center">
+
+## Url Shortener
+</div>
+
+<div align="center">
   <table>
     <tr>
       <td>
-        <img alt="Frontend GUI" src="insert image here">
+        <img alt="Frontend GUI" src="https://github.com/user-attachments/assets/ada5a4c3-e8e4-40eb-9b0c-023ea1166149" width="500">
       </td>
     </tr>
   </table>
 </div>
 
-## url-shortener 
+## Overview
 Url Shortener is a web application that helps users to shorten the length of their URLs.
 Users can also customize the shortened link with their own alias, making the link more personal and easier to remember.
 
