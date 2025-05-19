@@ -7,7 +7,7 @@ const emit = defineEmits(['handleURLShorten'])
 
 const url = ref('')
 const alias = ref('');
-const errors = ref([]);
+const errors = ref<string[] | undefined>();
 
 async function handleSubmit() {
   errors.value = [];
