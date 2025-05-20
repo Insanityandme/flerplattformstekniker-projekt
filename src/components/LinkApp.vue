@@ -26,7 +26,6 @@ onMounted(() => {
       <UrlShortener @handleCreateLink="handleCreateLink" />
     </section>
     <section class="section-url-history">
-      <h4>Previous Links</h4>
       <SavedLinks :links="savedLinks" />
     </section>
   </div>
