@@ -47,16 +47,13 @@ const props = defineProps<{
   border-radius: 16px;
   padding: 0.5rem;
   margin: 0.2rem;
-
-  text-wrap-mode: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .card-bottom {
   display: flex;
   justify-content: center;
   padding: 0.2rem;
+  word-wrap: normal;
 }
 .card-bottom > a {
   text-wrap-mode: nowrap;
