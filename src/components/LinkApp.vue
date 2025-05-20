@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import SavedLinks from './SavedLinks.vue'
-import UrlShortener from './UrlShortener.vue'
-import type { urlData } from '../types/UrlTypes.ts'
+import SavedLinks from '@/components/SavedLinks.vue'
+import UrlShortener from '@/components/UrlShortener.vue'
+import type { urlData } from '@/types/UrlTypes.ts'
 
 const savedLinks = ref<urlData[]>([])
 
