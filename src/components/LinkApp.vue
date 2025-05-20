@@ -38,4 +38,8 @@ onMounted(() => {
   flex-direction: column;
 }
 
+.section-url-history {
+  max-width: 400px;
+  margin: 0 auto;
+}
 </style>
