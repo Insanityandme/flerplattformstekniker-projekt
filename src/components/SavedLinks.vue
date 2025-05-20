@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import type { urlData } from '../types/UrlTypes.ts'
+import type { urlData } from '@/types/UrlTypes.ts'
+import LinkHistoryCard from '@/components/LinkHistoryCard.vue'
 
 const props = defineProps<{
   links: urlData[]
@@ -9,15 +10,20 @@ const props = defineProps<{
 <template>
   <ul>
     <li v-for="(link, index) in props.links" :key="index">
-      <a :href="link.shortLink" target="_blank">{{ link.shortLink }} ({{ link.longLink }})</a>
+      <LinkHistoryCard :id="index" :linkData="link" />
     </li>
   </ul>
 </template>
 
 <style scoped>
-
+ul {
+  padding: 0;
+  border: 0;
+}
 li {
   word-wrap: break-word;
+  list-style: none;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 5px #999;
 }
-
 </style>
