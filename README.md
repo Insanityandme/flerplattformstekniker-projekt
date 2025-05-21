@@ -36,7 +36,8 @@ The application uses LocalStorage to save previously shortened links locally in 
 
 | Name                                                  | Description                                        |
 |-------------------------------------------------------|----------------------------------------------------|
-| [Tinyurl](https://tinyurl.com/app/dev)                | shorten long URLS into TinyURLs                    |
+| [Tinyurl](https://tinyurl.com/app/dev)                | Shorten long URLS into TinyURLs                    |
+| [qrcode-with-logos](https://zxpsuper.github.io/qrcode-with-logos/) | Library for generating QR codes       |
 
 #### Standards 
 
