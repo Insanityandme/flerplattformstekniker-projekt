@@ -28,17 +28,6 @@ export async function createQR(url: urlData): Promise<HTMLImageElement | undefin
   }
 }
 
-export async function batchCreateQR(urls: urlData[]): Promise<HTMLImageElement[]> {
-  const qrCodes: HTMLImageElement[] = []
-  for (const url of urls) {
-    const qrcode = await createQR(url)
-    if (qrcode) {
-      qrCodes.push(qrcode)
-    }
-  }
-  return qrCodes
-}
-
 function _blobToDataURL(blob: Blob): Promise<string> {
   return new Promise((resolve) => {
     const reader = new FileReader()
