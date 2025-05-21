@@ -18,15 +18,4 @@ const handleURLShorten = (urlData: urlData) => {
 
 <template>
   <UrlCreator @handleURLShorten="handleURLShorten" />
-
-  <p v-if="urlLinks && urlLinks.shortLink">
-    Short link: <a :href="urlLinks.shortLink" target="_blank">{{ urlLinks.shortLink }}</a>
-  </p>
 </template>
-
-<style scoped>
-p {
-  margin-bottom: 2rem;
-}
-
-</style>

@@ -1,16 +1,12 @@
-import type { urlData } from '@/types/UrlTypes'
 import QrCodeWithLogo from 'qrcode-with-logos'
 
-export async function createQR(
-  url: urlData,
-  imgUrl?: string,
-): Promise<HTMLImageElement | undefined> {
+export async function createQR(url: string, imgUrl?: string): Promise<string | undefined> {
   try {
     const corsProxy = 'https://corsproxy.io/?url='
-    const faviconUrl = `https://icons.duckduckgo.com/ip3/${new URL(url.longLink).hostname}.ico`
+    const faviconUrl = `https://icons.duckduckgo.com/ip3/${new URL(url).hostname}.ico`
 
-    let customImage = ""
-    if (imgUrl){
+    let customImage = ''
+    if (imgUrl) {
       customImage = corsProxy + encodeURIComponent(imgUrl)
     }
 
@@ -22,14 +18,14 @@ export async function createQR(
 
     const qrcode = new QrCodeWithLogo({
       image: QRCode,
-      content: url.shortLink,
+      content: url,
       width: 380,
       logo: {
         src: imgUrl ? customImage : dataUrl,
       },
     })
 
-    return await qrcode.getImage()
+    return (await qrcode.getImage()).src
   } catch (error) {
     console.error('Failed to create QR code:', error)
     return undefined

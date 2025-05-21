@@ -6,11 +6,11 @@ import type { urlResponse, urlError } from '../types/UrlTypes.ts'
 const emit = defineEmits(['handleURLShorten'])
 
 const url = ref('')
-const alias = ref('');
-const errors = ref<string[] | undefined>();
+const alias = ref('')
+const errors = ref<string[] | undefined>()
 
 async function handleSubmit() {
-  errors.value = [];
+  errors.value = []
   const response: urlResponse = await createShortUrl(url.value, alias.value)
   console.log(response)
 
@@ -18,28 +18,26 @@ async function handleSubmit() {
     const error: urlError | undefined = response.error
     console.error('LOG: ' + error?.code)
     console.error('LOG: ' + error?.errors)
-    errors.value = error?.errors;
-    console.log(errors.value);
-
+    errors.value = error?.errors
     return
   }
 
-  if (!response.data) {
-    return
+  if (response.data) {
+    emit('handleURLShorten', response.data)
   }
-  emit('handleURLShorten', response.data)
 }
 </script>
 
 <template>
   <form @submit.prevent="handleSubmit" class="url-form">
-    <h4>Shorten a URL</h4>
+    <br />
+    <h5>Url Shortener</h5>
 
     <label>Original URL:</label>
     <input v-model="url" type="url" placeholder="Paste your URL here" required />
 
-    <label>Customize your link</label>
-    <input v-model="alias" type="text" placeholder="Enter alias"/>
+    <label>Custom URL:</label>
+    <input v-model="alias" type="text" placeholder="Enter alias" />
 
     <button type="submit">Generate Short URL</button>
   </form>
@@ -51,7 +49,8 @@ async function handleSubmit() {
 
 <style scoped>
 .url-form {
-  max-width: 400px;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 2rem;
 }
 
@@ -61,6 +60,7 @@ async function handleSubmit() {
 
 .url-form > input {
   margin: 0 0 1rem 0;
+  width: 100%;
 }
 
 input {
@@ -74,5 +74,6 @@ button {
   margin-top: 1rem;
   padding: 0.5rem;
   cursor: pointer;
+  width: 100%;
 }
 </style>
