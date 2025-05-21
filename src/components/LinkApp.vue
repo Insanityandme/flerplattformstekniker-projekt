@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import SavedLinks from './SavedLinks.vue'
-import UrlShortener from './UrlShortener.vue'
-import type { urlData } from '../types/UrlTypes.ts'
+import SavedLinks from '@/components/SavedLinks.vue'
+import UrlShortener from '@/components/UrlShortener.vue'
+import type { urlData } from '@/types/UrlTypes.ts'
 
 const savedLinks = ref<urlData[]>([])
 
@@ -26,7 +26,6 @@ onMounted(() => {
       <UrlShortener @handleCreateLink="handleCreateLink" />
     </section>
     <section class="section-url-history">
-      <h4>Previous Links</h4>
       <SavedLinks :links="savedLinks" />
     </section>
   </div>
@@ -39,4 +38,8 @@ onMounted(() => {
   flex-direction: column;
 }
 
+.section-url-history {
+  max-width: 400px;
+  margin: 0 auto;
+}
 </style>
