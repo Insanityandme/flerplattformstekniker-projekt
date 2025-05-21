@@ -1,6 +1,8 @@
 /* Base */
 /* 1. Use a more-intuitive box-sizing model */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -24,18 +26,31 @@ body {
 }
 
 /* 6. Improve media defaults */
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
 
 /* 7. Inherit fonts for form controls */
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 
 /* 8. Avoid text overflows */
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   overflow-wrap: break-word;
 }
 
@@ -43,14 +58,20 @@ p, h1, h2, h3, h4, h5, h6 {
 p {
   text-wrap: pretty;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-wrap: balance;
 }
 
 /*
   10. Create a root stacking context
 */
-#root, #__next {
+#root,
+#__next {
   isolation: isolate;
 }
 
@@ -181,7 +202,7 @@ figure {
   margin: 0;
 }
 .container {
-  max-width: 850px;
+  max-width: 950px;
   margin: 1rem auto;
   background-color: var(--white);
   color: var(--black);
@@ -204,22 +225,4 @@ figure {
 
 .button:hover {
   background-color: var(--tan);
-}
-
-@media (max-width: 880px) {
-  .container {
-    max-width: 650px;
-  }
-}
-
-@media (max-width: 650px) {
-  .container {
-    max-width: 450px;
-  }
-}
-
-@media (max-width: 450px) {
-  .container {
-    width: 100%;
-  }
 }
