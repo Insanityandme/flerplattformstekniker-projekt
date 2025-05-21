@@ -25,5 +25,7 @@ li {
   list-style: none;
   margin-bottom: 1rem;
   box-shadow: 0 0 5px #999;
+  border-radius: 16px;
+  padding: 0.5rem;
 }
 </style>

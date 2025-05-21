@@ -33,20 +33,22 @@ const props = defineProps<{
 
 .card-top {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
-  justify-items: center;
+  justify-content: center;
 }
 .card-top > img {
   width: 100%;
-  flex-basis: 20%;
+  max-width: 20%;
+  height: auto;
 }
 .card-top > button {
-  flex-basis: 80%;
+  flex-grow: 1;
+  max-width: 100%;
   background-color: lightgreen;
   border-radius: 16px;
   padding: 0.5rem;
-  margin: 0.2rem;
 }
 
 .card-bottom {
