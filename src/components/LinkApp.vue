@@ -53,16 +53,21 @@ onMounted(() => {
         :disabled="selectedView === AppView.URLShortener"
         @mousedown="handleSetView(AppView.URLShortener)"
       >
-        URL Shortener
+        <img src="@/assets/link.svg" alt="Link icon" aria-label="Switch view to url shortener" />
       </button>
       <button
         :disabled="selectedView === AppView.QRGenerator"
         @mousedown="handleSetView(AppView.QRGenerator)"
       >
-        QR Code Creator
+        <img
+          src="@/assets/qr.svg"
+          alt="QR code icon"
+          aria-label="Switch view to qr code
+          generator"
+        />
       </button>
       <button :disabled="selectedView === AppView.TODO" @mousedown="handleSetView(AppView.TODO)">
-        TODO
+        <img src="@/assets/todo.svg" alt="TODO icon" aria-label="Switch view to TODO" />
       </button>
     </div>
 
@@ -106,7 +111,16 @@ p {
   margin-bottom: 1rem;
 }
 .view-switch-buttons > button {
-  flex-grow: 1;
+  border-radius: 8px;
+}
+.view-switch-buttons > button:disabled {
+  background-color: lightgreen;
+}
+.view-switch-buttons > button > img {
+  width: 32px;
+  max-width: 100%;
+  height: auto;
+  pointer-events: none;
 }
 
 .section-url-shortener {
