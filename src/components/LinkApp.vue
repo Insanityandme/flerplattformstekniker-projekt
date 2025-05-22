@@ -74,12 +74,14 @@ onMounted(() => {
 
     <!-- URL Shortener -->
     <section v-else-if="selectedView === AppView.URLShortener" class="section-url-shortener">
+      <h5>Url Shortener</h5>
       <UrlShortener @handleCreateLink="handleCreateLink" />
       <SavedLinks :links="savedLinks" />
     </section>
 
     <!-- QR Creator -->
     <section v-else-if="selectedView === AppView.QRGenerator" class="section-qr-generator">
+      <h5>QR Generator</h5>
       <QRCreator @handleCreateQR="handleCreateQR" />
       <SavedQRCodes :qrCodes="savedQRCodes" />
     </section>

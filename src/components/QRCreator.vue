@@ -22,9 +22,6 @@ async function handleSubmit() {
 
 <template>
   <form @submit.prevent="handleSubmit" class="qr-form">
-    <br />
-    <h5>QR Generator</h5>
-
     <label>Original URL:</label>
     <input v-model="url" type="url" placeholder="Paste your URL here" required />
 

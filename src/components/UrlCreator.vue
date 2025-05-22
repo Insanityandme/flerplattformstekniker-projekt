@@ -30,9 +30,6 @@ async function handleSubmit() {
 
 <template>
   <form @submit.prevent="handleSubmit" class="url-form">
-    <br />
-    <h5>Url Shortener</h5>
-
     <label>Original URL:</label>
     <input v-model="url" type="url" placeholder="Paste your URL here" required />
 
