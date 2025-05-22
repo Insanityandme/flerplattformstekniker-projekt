@@ -15,7 +15,7 @@ enum AppView {
   QRGenerator,
   TODO,
 }
-const selectedView = ref<AppView>(AppView.None)
+const selectedView = ref<AppView>(AppView.URLShortener)
 
 const handleSetView = (view: AppView) => {
   selectedView.value = view
