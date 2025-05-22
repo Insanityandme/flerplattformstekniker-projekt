@@ -103,6 +103,9 @@ h4,
 p {
   text-align: center;
 }
+h5 {
+  text-align: center;
+}
 
 .view-switch-buttons {
   display: flex;
