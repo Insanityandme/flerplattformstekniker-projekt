@@ -1,28 +1,65 @@
 import QrCodeWithLogo from 'qrcode-with-logos'
 
-export async function createQR(url: string, imgUrl?: string): Promise<string | undefined> {
+let cachedHostname = ''
+let cachedFavicon = ''
+
+let cachedImgUrl = ''
+let cachedImageData = ''
+
+export async function createQR(
+  url?: string,
+  imgUrl?: string,
+  logoData?: string,
+  download?: boolean,
+  dotsOptions?: { type?: string; color?: string },
+  cornersOptions?: { type?: string; color?: string }
+): Promise<string | undefined> {
   try {
     const corsProxy = 'https://corsproxy.io/?url='
-    const faviconUrl = `https://icons.duckduckgo.com/ip3/${new URL(url).hostname}.ico`
+
+    let faviconUrl = ''
+    let dataUrl = ''
+    if (url) {
+      const hostname = new URL(url).hostname;
+      faviconUrl = `https://icons.duckduckgo.com/ip3/${hostname}.ico`
+
+      if (hostname === cachedHostname && cachedFavicon) {
+        dataUrl = cachedFavicon
+      } else {
+        const response = await fetch(`${corsProxy}${encodeURIComponent(faviconUrl)}`)
+        const blob = await response.blob()
+        dataUrl = await _blobToDataURL(blob)
+        cachedHostname = hostname
+        cachedFavicon = dataUrl
+      }
+    }
 
     let customImage = ''
     if (imgUrl) {
-      customImage = corsProxy + encodeURIComponent(imgUrl)
+      if (imgUrl === cachedImgUrl && cachedImageData) {
+        customImage = cachedImageData
+      } else {
+        const response = await fetch(`${corsProxy}${encodeURIComponent(imgUrl)}`)
+        const blob = await response.blob()
+        customImage = await _blobToDataURL(blob)
+        cachedImgUrl = imgUrl
+        cachedImageData = customImage
+      }
+    } else if (logoData) {
+      customImage = logoData
     }
 
-    const response = await fetch(`${corsProxy}${encodeURIComponent(faviconUrl)}`)
-    const blob = await response.blob()
-    const dataUrl = await _blobToDataURL(blob)
-
     const QRCode = document.createElement('img')
-
     const qrcode = new QrCodeWithLogo({
       image: QRCode,
-      content: url,
+      download,
+      content: url ? url : 'https://www.youtube.com/watch?v=xm3YgoEiEDc',
       width: 380,
       logo: {
-        src: imgUrl ? customImage : dataUrl,
+        src: customImage ? customImage : dataUrl || '/chuck-norris-placeholder.jpg',
       },
+      dotsOptions: dotsOptions,
+      cornersOptions: cornersOptions
     })
 
     return (await qrcode.getImage()).src
