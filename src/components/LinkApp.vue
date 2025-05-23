@@ -9,6 +9,18 @@ import type { urlData } from '@/types/UrlTypes.ts'
 const savedLinks = ref<urlData[]>([])
 const savedQRCodes = ref<string[]>([])
 
+enum AppView {
+  None,
+  URLShortener,
+  QRGenerator,
+  TODO,
+}
+const selectedView = ref<AppView>(AppView.URLShortener)
+
+const handleSetView = (view: AppView) => {
+  selectedView.value = view
+}
+
 const handleCreateLink = (link: urlData) => {
   savedLinks.value.unshift(link)
   localStorage.setItem('savedLinks', JSON.stringify(savedLinks.value))
@@ -36,20 +48,53 @@ onMounted(() => {
 
 <template>
   <div class="container">
-    <h4>Url Toolbox</h4>
-    <p>Shorten long URLs or generate QR codes!</p>
-
-    <div class="section-top-row">
-      <section class="section-url-shortener">
-        <UrlShortener @handleCreateLink="handleCreateLink" />
-        <SavedLinks :links="savedLinks" />
-      </section>
-
-      <section class="section-qr-generator">
-        <QRCreator @handleCreateQR="handleCreateQR" />
-        <SavedQRCodes :qrCodes="savedQRCodes" />
-      </section>
+    <div class="view-switch-buttons">
+      <button
+        :disabled="selectedView === AppView.URLShortener"
+        @mousedown="handleSetView(AppView.URLShortener)"
+      >
+        <img src="@/assets/link.svg" alt="Link icon" aria-label="Switch view to url shortener" />
+      </button>
+      <button
+        :disabled="selectedView === AppView.QRGenerator"
+        @mousedown="handleSetView(AppView.QRGenerator)"
+      >
+        <img
+          src="@/assets/qr.svg"
+          alt="QR code icon"
+          aria-label="Switch view to qr code
+          generator"
+        />
+      </button>
+      <button :disabled="selectedView === AppView.TODO" @mousedown="handleSetView(AppView.TODO)">
+        <img src="@/assets/todo.svg" alt="TODO icon" aria-label="Switch view to TODO" />
+      </button>
     </div>
+
+    <!-- Welcome menu -->
+    <div v-if="selectedView === AppView.None">
+      <h4>Url Toolbox</h4>
+      <p>Shorten long URLs or generate QR codes!</p>
+    </div>
+
+    <!-- URL Shortener -->
+    <section v-else-if="selectedView === AppView.URLShortener" class="section-url-shortener">
+      <h5>Url Shortener</h5>
+      <UrlShortener @handleCreateLink="handleCreateLink" />
+      <SavedLinks :links="savedLinks" />
+    </section>
+
+    <!-- QR Creator -->
+    <section v-else-if="selectedView === AppView.QRGenerator" class="section-qr-generator">
+      <h5>QR Generator</h5>
+      <QRCreator @handleCreateQR="handleCreateQR" />
+      <SavedQRCodes :qrCodes="savedQRCodes" />
+    </section>
+
+    <!-- TODO -->
+    <section v-else-if="selectedView === AppView.TODO">
+      <h5>TODO</h5>
+    </section>
   </div>
 </template>
 
@@ -57,6 +102,28 @@ onMounted(() => {
 h4,
 p {
   text-align: center;
+}
+h5 {
+  text-align: center;
+}
+
+.view-switch-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.view-switch-buttons > button {
+  border-radius: 8px;
+}
+.view-switch-buttons > button:disabled {
+  background-color: lightgreen;
+}
+.view-switch-buttons > button > img {
+  width: 32px;
+  max-width: 100%;
+  height: auto;
+  cursor: pointer;
 }
 
 .section-url-shortener {
