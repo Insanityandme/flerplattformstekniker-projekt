@@ -123,7 +123,7 @@ h5 {
   width: 32px;
   max-width: 100%;
   height: auto;
-  pointer-events: none;
+  cursor: pointer;
 }
 
 .section-url-shortener {
