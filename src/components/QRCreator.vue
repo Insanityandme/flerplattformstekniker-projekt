@@ -1,19 +1,33 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import { createQR } from '@/api/QRService'
-import { onMounted } from 'vue'
 import { debounce } from '@/util/utilities'
 
 const emit = defineEmits(['handleCreateQR'])
 
 const dotTypes = [
-  'square', 'dot', 'dot-small', 'tile', 'rounded', 'diamond', 'star', 'fluid',
-  'fluid-line', 'stripe', 'stripe-row', 'stripe-column'
+  'square',
+  'dot',
+  'dot-small',
+  'tile',
+  'rounded',
+  'diamond',
+  'star',
+  'fluid',
+  'fluid-line',
+  'stripe',
+  'stripe-row',
+  'stripe-column',
 ]
 
 const cornerTypes = [
-  'square', 'rounded', 'circle', 'rounded-circle', 'circle-rounded',
-  'circle-diamond', 'circle-star'
+  'square',
+  'rounded',
+  'circle',
+  'rounded-circle',
+  'circle-rounded',
+  'circle-diamond',
+  'circle-star',
 ]
 
 const url = ref<string>('')
@@ -59,7 +73,7 @@ async function generateQR() {
       logoData.value || undefined,
       false,
       { type: dotType.value, color: dotColor.value },
-      { type: cornerType.value, color: cornerColor.value }
+      { type: cornerType.value, color: cornerColor.value },
     )
 
     if (src) {
@@ -79,7 +93,7 @@ async function downloadQR() {
       logoData.value || undefined,
       true,
       { type: dotType.value, color: dotColor.value },
-      { type: cornerType.value, color: cornerColor.value }
+      { type: cornerType.value, color: cornerColor.value },
     )
   } catch (error) {
     errors.value.push('Failed to download QR code.')
@@ -98,7 +112,6 @@ const debouncedGenerateQR = debounce(generateQR, 10)
 watch([url, imgUrl, logoData, dotColor, cornerColor, dotType, cornerType], () => {
   debouncedGenerateQR()
 })
-
 </script>
 
 <template>
@@ -110,7 +123,7 @@ watch([url, imgUrl, logoData, dotColor, cornerColor, dotType, cornerType], () =>
     <input v-model="imgUrl" type="text" placeholder="Enter custom image" />
 
     <button type="submit">Save QR Code</button>
-    <br>
+    <br />
 
     <div class="qr-container">
       <img :src="qrSrc" alt="QR Code" width="280" height="280" />
@@ -139,7 +152,6 @@ watch([url, imgUrl, logoData, dotColor, cornerColor, dotType, cornerType], () =>
 
           <button type="button" @click="changeLogo">Change Logo</button>
         </div>
-
       </div>
     </div>
   </form>
@@ -156,11 +168,11 @@ watch([url, imgUrl, logoData, dotColor, cornerColor, dotType, cornerType], () =>
   margin-bottom: 2rem;
 }
 
-.qr-form>h4 {
+.qr-form > h4 {
   margin: 0 0 1rem 0;
 }
 
-.qr-form>input {
+.qr-form > input {
   margin: 0 0 1rem 0;
   width: 100%;
 }

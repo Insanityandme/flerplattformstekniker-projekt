@@ -12,7 +12,7 @@ export async function createQR(
   logoData?: string,
   download?: boolean,
   dotsOptions?: { type?: string; color?: string },
-  cornersOptions?: { type?: string; color?: string }
+  cornersOptions?: { type?: string; color?: string },
 ): Promise<string | undefined> {
   try {
     const corsProxy = 'https://corsproxy.io/?url='
@@ -20,7 +20,7 @@ export async function createQR(
     let faviconUrl = ''
     let dataUrl = ''
     if (url) {
-      const hostname = new URL(url).hostname;
+      const hostname = new URL(url).hostname
       faviconUrl = `https://icons.duckduckgo.com/ip3/${hostname}.ico`
 
       if (hostname === cachedHostname && cachedFavicon) {
@@ -59,7 +59,7 @@ export async function createQR(
         src: customImage ? customImage : dataUrl || '/chuck-norris-placeholder.jpg',
       },
       dotsOptions: dotsOptions,
-      cornersOptions: cornersOptions
+      cornersOptions: cornersOptions,
     })
 
     return (await qrcode.getImage()).src
