@@ -1,4 +1,5 @@
 import QrCodeWithLogo from 'qrcode-with-logos'
+import type { DotType, CornerType } from 'qrcode-with-logos/types/src/core/types';
 
 let cachedHostname = ''
 let cachedFavicon = ''
@@ -11,8 +12,8 @@ export async function createQR(
   imgUrl?: string,
   logoData?: string,
   download?: boolean,
-  dotsOptions?: { type?: string; color?: string },
-  cornersOptions?: { type?: string; color?: string },
+  dotsOptions?: { type?: DotType; color?: string },
+  cornersOptions?: { type?: CornerType; color?: string },
 ): Promise<string | undefined> {
   try {
     const corsProxy = 'https://corsproxy.io/?url='

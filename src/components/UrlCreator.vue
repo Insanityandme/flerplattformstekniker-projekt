@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { createShortUrl } from '@/api/urlService.ts'
+import { createShortUrl } from '@/api/UrlService.ts'
 import type { urlResponse, urlError } from '@/types/UrlTypes'
 
 const emit = defineEmits(['handleURLShorten'])

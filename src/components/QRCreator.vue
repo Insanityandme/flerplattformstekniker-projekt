@@ -2,6 +2,7 @@
 import { ref, watch } from 'vue'
 import { createQR } from '@/api/QRService'
 import { debounce } from '@/util/utilities'
+import type { DotType, CornerType } from 'qrcode-with-logos/types/src/core/types';
 
 const emit = defineEmits(['handleCreateQR'])
 
@@ -38,8 +39,8 @@ const errors = ref<string[]>([])
 
 const dotColor = ref<string>('#000000')
 const cornerColor = ref<string>('#000000')
-const dotType = ref<string>('square')
-const cornerType = ref<string>('square')
+const dotType = ref<DotType>('square')
+const cornerType = ref<CornerType>('square')
 
 function changeLogo() {
   const input = document.createElement('input')
