@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { urlData } from '@/types/UrlTypes.ts'
+import type { urlData } from '@/types/UrlTypes'
 import LinkHistoryCard from '@/components/LinkHistoryCard.vue'
 
 const props = defineProps<{
