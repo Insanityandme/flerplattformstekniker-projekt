@@ -2,11 +2,11 @@
 import { ref, watch } from 'vue'
 import { createQR } from '@/api/QRService'
 import { debounce } from '@/util/utilities'
-import type { DotType, CornerType } from 'qrcode-with-logos/types/src/core/types';
+import type { DotType, CornerType } from 'qrcode-with-logos/types/src/core/types'
 
 const emit = defineEmits(['handleCreateQR'])
 
-const dotTypes = [
+const dotTypes: DotType[] = [
   'square',
   'dot',
   'dot-small',
@@ -21,7 +21,7 @@ const dotTypes = [
   'stripe-column',
 ]
 
-const cornerTypes = [
+const cornerTypes: CornerType[] = [
   'square',
   'rounded',
   'circle',

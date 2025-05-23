@@ -1,5 +1,5 @@
 import QrCodeWithLogo from 'qrcode-with-logos'
-import type { DotType, CornerType } from 'qrcode-with-logos/types/src/core/types';
+import type { DotType, CornerType } from 'qrcode-with-logos/types/src/core/types'
 
 let cachedHostname = ''
 let cachedFavicon = ''
