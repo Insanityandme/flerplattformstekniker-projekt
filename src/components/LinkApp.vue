@@ -5,6 +5,7 @@ import UrlShortener from '@/components/UrlShortener.vue'
 import QRCreator from '@/components/QRCreator.vue'
 import SavedQRCodes from '@/components/SavedQRCodes.vue'
 import type { urlData } from '@/types/UrlTypes'
+import { updateChromeExtension} from '@/util/utilities'
 
 const savedLinks = ref<urlData[]>([])
 const savedQRCodes = ref<string[]>([])
@@ -43,6 +44,13 @@ onMounted(() => {
 
   const qrCodes = JSON.parse(savedQRCodesRaw)
   savedQRCodes.value = qrCodes
+
+  // Update the content for the extention
+  if (window.chrome?.runtime) {
+    updateChromeExtension(links)
+  } else {
+    console.log('Chrome runtime is not available')
+  }
 })
 </script>
 
