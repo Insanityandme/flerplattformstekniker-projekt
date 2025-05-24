@@ -7,7 +7,7 @@ export function debounce<T extends (...args: unknown[]) => void>(fn: T, delay: n
 }
 
 export function updateChromeExtension(links: any[]) {
-  const extensionId = 'mmccleijfjojajhejhgkjmialkigbpjb';
+  const extensionId = 'dffhkpjammkicoldkcfkhmjpjhkoojlm';
 
   if (window.chrome?.runtime?.sendMessage) {
     window.chrome.runtime.sendMessage(
