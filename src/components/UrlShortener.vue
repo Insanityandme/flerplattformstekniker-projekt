@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { urlData } from '../types/UrlTypes.ts'
-import UrlCreator from './UrlCreator.vue'
+import type { urlData } from '@/types/UrlTypes'
+import UrlCreator from '@/components/UrlCreator.vue'
 
 const urlLinks = ref<urlData>({
   shortLink: '',
