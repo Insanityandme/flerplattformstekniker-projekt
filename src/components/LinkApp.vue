@@ -25,6 +25,7 @@ const handleSetView = (view: AppView) => {
 const handleCreateLink = (link: urlData) => {
   savedLinks.value.unshift(link)
   localStorage.setItem('savedLinks', JSON.stringify(savedLinks.value))
+  updateChromeExtension(savedLinks.value)
 }
 
 const handleCreateQR = (base64ImageSrc: string) => {
