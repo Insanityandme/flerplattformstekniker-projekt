@@ -1,0 +1,19 @@
+* {
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  max-height: 400px;
+  padding: 1rem;
+  background-color: #31b28a;
+}
+
+#create-shortcut {
+  margin-bottom: 1rem;
+}
+
+.btn-group{
+  margin-bottom: 0.5rem;
+}

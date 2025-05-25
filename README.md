@@ -1,61 +1,80 @@
 <div align="center">
-
-## Url Toolbox
+ <h1>Url Toolbox</h1>
+ <p>Url Toolbox is a web application that helps users with their URLs in various ways.</p>
 </div>
 
 <div align="center">
   <table>
     <tr>
       <td>
-        <img alt="Frontend GUI" src="https://github.com/user-attachments/assets/ada5a4c3-e8e4-40eb-9b0c-023ea1166149" width="500">
+        <img alt="url-shortner" src="./assets/url-shortener.jpg">
+      </td>
+      <td>
+        <img alt="qr-generator" src="./assets/QR-generator.jpg">
       </td>
     </tr>
   </table>
 </div>
 
-## Overview
-Url Toolbox is a web application that helps users with their URLs in various ways.
+### Features:
 
-Our application has two main tools:
-* URL Shortener: Shorten the length of their URLs. Users can also customize the shortened link with their own alias, making the link more personal and easier to remember.
-* QR Generator: Generate unique QR codes with its own color and logo.
+- **URL Shortener**: Shorten the length of their URLs. Users can also customize the shortened link with their own alias, making the link more personal and easier to remember.
+- **QR Generator**: Generate unique QR codes with its own color and logo.
+- **Chrome extension**: Provides quick access to the URL Shortener from your browser toolbar.
 
 The application is built with Vue 3, which enables a component-based architecture. It is responsive, making it usable on mobile devices, tablets, and desktops.
 
 The application uses LocalStorage to save previously shortened links locally in the browser. This keeps the application as simple as possible, since no account is needed to use the service.
 
+---
+
+### Chrome Extension
+
+There is also a Chrome extension available for Url Toolbox, providing quick access to the URL Shortener directly from your browser toolbar. [Install guide](#extension-setup)
+
+  <table>
+    <tr>
+      <td>
+        <img alt="Chrome Extension" src="./assets/extension.png" width="200">
+      </td>
+    </tr>
+  </table>
+
+---
+
 ### Technologies used
 
 #### Frontend
 
-| Name                                                  | Description                                        |
-|-------------------------------------------------------|----------------------------------------------------|
-| [Vue 3](https://vuejs.org/)                           | Frontend javascript framework for building UIs     |
-| [Vite](https://vite.dev/)                             | Build tool                                         |
-| [eslint](https://eslint.org/)                         | Static code analyzer                               |
-| [prettier](https://prettier.io/)                      | Code formatter                                     |
+| Name                             | Description                                    |
+| -------------------------------- | ---------------------------------------------- |
+| [Vue 3](https://vuejs.org/)      | Frontend javascript framework for building UIs |
+| [Vite](https://vite.dev/)        | Build tool                                     |
+| [eslint](https://eslint.org/)    | Static code analyzer                           |
+| [prettier](https://prettier.io/) | Code formatter                                 |
 
 #### Api
 
-| Name                                                  | Description                                        |
-|-------------------------------------------------------|----------------------------------------------------|
-| [Tinyurl](https://tinyurl.com/app/dev)                | Shorten long URLS into TinyURLs                    |
+| Name                                   | Description                                                                  |
+| -------------------------------------- | ---------------------------------------------------------------------------- |
+| [Tinyurl](https://tinyurl.com/app/dev) | Shorten long URLS into TinyURLs                                              |
+| [corsproxy.io](https://corsproxy.io/)  | Bypasses browser CORS restrictions to securely access cross-domain resources |
 
 #### Libraries
 
-| Name                                                               | Description                           |
-|--------------------------------------------------------------------|---------------------------------------|
-| [qrcode-with-logos](https://zxpsuper.github.io/qrcode-with-logos/) | Library for generating QR codes       |
+| Name                                                               | Description                     |
+| ------------------------------------------------------------------ | ------------------------------- |
+| [qrcode-with-logos](https://zxpsuper.github.io/qrcode-with-logos/) | Library for generating QR codes |
 
-#### Standards 
+#### Standards
 
-| Name                                                  | Description                                        |
-|-------------------------------------------------------|----------------------------------------------------|
-| [Semantic Versioning](https://semver.org/)            | Versioning scheme for software releases            |
-| [Conventional Commits](https://tinyurl.com/cchellyeah)| Naming convention for commit messages              |
+| Name                                                   | Description                             |
+| ------------------------------------------------------ | --------------------------------------- |
+| [Semantic Versioning](https://semver.org/)             | Versioning scheme for software releases |
+| [Conventional Commits](https://tinyurl.com/cchellyeah) | Naming convention for commit messages   |
 
+## Framework comparisons
 
-## Framework comparisons 
 ### Vue vs React
 
 Vue uses HTML templating to integrate JavaScript into HTML. Vue is similar to traditional web development, where CSS, HTML, and JavaScript are separated. React, on the other hand, uses JavaScript Expressions (JSX) to include HTML within JavaScript files. Both Vue and React have components with a lifecycle that allows the application to re-render only the parts that need to be updated when a component changes. It can, however, be argued that Vue does this in an easier way.
@@ -67,6 +86,7 @@ We chose Vue as the framework instead of React, primarily because we had signifi
 Source: https://hackr.io/blog/react-vs-vue
 
 ### Vue vs Angular
+
 Angular is a JavaScript framework maintained by Google. It is an older but proven framework based on the Model View Controller (MVC) pattern, with projects written in TypeScript. Angular has several built-in features. For example, it includes a router for building single-page applications (SPA). Another feature is the built-in testing framework Jasmine. With this testing framework, one can create unit and integration tests for the application. In light of this, Angular can be considered a good choice for larger projects where testing and adherence to various requirements are important.
 
 Vue, compared to Angular, has less built-in functionality and relies more on adding external modules to increase functionality, which Angular largely includes out of the box. However, these features and the MVC pattern in Angular contribute to greater overhead compared to Vue. Additionally, the learning curve is steeper with Angular, as it has more of its own syntax, whereas Vue stays closer to HTML, CSS, and JavaScript with its use of templates. Since this is a smaller project, we do not need the many features that Angular provides. Therefore, we believe that choosing Vue is more advantageous. This is because Vue offers a simpler syntax, a smaller learning curve, and a program size that is not as large as Angular.
@@ -76,8 +96,9 @@ Source: https://www.orientsoftware.com/blog/angular-vs-vue/
 ## Project Setup
 
 ### Prerequisites
-* [Git](https://git-scm.com) version >= 2.13
-* [Node.js](https://nodejs.org) version >= 22
+
+- [Git](https://git-scm.com) version >= 2.13
+- [Node.js](https://nodejs.org) version >= 22
 
 ```sh
 npm install
@@ -109,4 +130,21 @@ TypeScript cannot handle type information for `.vue` imports by default, so we r
 
 See [Vite Configuration Reference](https://vite.dev/config/).
 
+## Extension Setup
 
+### Prerequisites
+
+- **Url Toolbox** running at `http://localhost:5173`
+- A Chromium-based browser (e.g., Chrome, Brave)
+
+---
+
+### Installation
+
+1. [Download the latest `chrome-extension.crx`](https://github.com/Insanityandme/url-toolbox/releases) from the GitHub releases page.
+2. Open your browser’s extensions page:
+   - `chrome://extensions/` (for Chrome)
+   - `brave://extensions/` (for Brave)
+3. Enable **Developer mode** (top right).
+4. Drag and drop the `.crx` file onto the page.
+5. Click **“Add Extension”** when prompted.
