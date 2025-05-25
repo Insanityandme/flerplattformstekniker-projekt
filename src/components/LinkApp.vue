@@ -4,7 +4,9 @@ import SavedLinks from '@/components/SavedLinks.vue'
 import UrlShortener from '@/components/UrlShortener.vue'
 import QRCreator from '@/components/QRCreator.vue'
 import SavedQRCodes from '@/components/SavedQRCodes.vue'
+import ExtensionInfo from '@/components/ExtensionInfo.vue'
 import type { urlData } from '@/types/UrlTypes'
+import { updateChromeExtension } from '@/util/utilities'
 
 const savedLinks = ref<urlData[]>([])
 const savedQRCodes = ref<string[]>([])
@@ -13,7 +15,7 @@ enum AppView {
   None,
   URLShortener,
   QRGenerator,
-  TODO,
+  ChromeExtension,
 }
 const selectedView = ref<AppView>(AppView.URLShortener)
 
@@ -24,6 +26,7 @@ const handleSetView = (view: AppView) => {
 const handleCreateLink = (link: urlData) => {
   savedLinks.value.unshift(link)
   localStorage.setItem('savedLinks', JSON.stringify(savedLinks.value))
+  updateChromeExtension(savedLinks.value)
 }
 
 const handleCreateQR = (base64ImageSrc: string) => {
@@ -43,6 +46,13 @@ onMounted(() => {
 
   const qrCodes = JSON.parse(savedQRCodesRaw)
   savedQRCodes.value = qrCodes
+
+  // Update the content for the extention
+  if (window.chrome?.runtime) {
+    updateChromeExtension(links)
+  } else {
+    console.log('Chrome runtime is not available')
+  }
 })
 </script>
 
@@ -66,8 +76,15 @@ onMounted(() => {
           generator"
         />
       </button>
-      <button :disabled="selectedView === AppView.TODO" @mousedown="handleSetView(AppView.TODO)">
-        <img src="@/assets/todo.svg" alt="TODO icon" aria-label="Switch view to TODO" />
+      <button
+        :disabled="selectedView === AppView.ChromeExtension"
+        @mousedown="handleSetView(AppView.ChromeExtension)"
+      >
+        <img
+          src="@/assets/chrome.svg"
+          alt="Chrome icon"
+          aria-label="Switch view to chrome extension"
+        />
       </button>
     </div>
 
@@ -91,9 +108,10 @@ onMounted(() => {
       <SavedQRCodes :qrCodes="savedQRCodes" />
     </section>
 
-    <!-- TODO -->
-    <section v-else-if="selectedView === AppView.TODO">
-      <h5>TODO</h5>
+    <!-- Chrome Extension -->
+    <section v-else-if="selectedView === AppView.ChromeExtension">
+      <h5>Chrome Extension</h5>
+      <ExtensionInfo />
     </section>
   </div>
 </template>

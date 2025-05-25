@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "url-toolbox",
+  "version": "1.0",
+  "description": "A Chrome extension for url-toolbox",
+  "host_permissions": ["http://localhost:5173/*"],
+  "permissions": ["scripting", "storage"],
+  "externally_connectable": {
+    "matches": ["http://localhost:5173/*"]
+  },
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icons/icon.png"
+  }
+}

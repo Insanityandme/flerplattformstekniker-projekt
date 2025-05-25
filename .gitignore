@@ -31,3 +31,4 @@ coverage
 
 # Env variables
 .env
+*.pem
