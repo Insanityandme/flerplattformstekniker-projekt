@@ -73,6 +73,7 @@ onMounted(() => {
           src="@/assets/link.svg"
           alt="Link icon"
           aria-label="Switch view to url shortener"
+          draggable="false"
         />
       </button>
       <button
@@ -84,6 +85,7 @@ onMounted(() => {
           alt="QR code icon"
           aria-label="Switch view to qr code
           generator"
+          draggable="false"
         />
       </button>
       <button
@@ -94,6 +96,7 @@ onMounted(() => {
           src="@/assets/chrome.svg"
           alt="Chrome icon"
           aria-label="Switch view to chrome extension"
+          draggable="false"
         />
       </button>
     </div>
