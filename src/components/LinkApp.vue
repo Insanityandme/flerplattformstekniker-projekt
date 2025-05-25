@@ -5,7 +5,7 @@ import UrlShortener from '@/components/UrlShortener.vue'
 import QRCreator from '@/components/QRCreator.vue'
 import SavedQRCodes from '@/components/SavedQRCodes.vue'
 import type { urlData } from '@/types/UrlTypes'
-import { updateChromeExtension} from '@/util/utilities'
+import { updateChromeExtension } from '@/util/utilities'
 
 const savedLinks = ref<urlData[]>([])
 const savedQRCodes = ref<string[]>([])
