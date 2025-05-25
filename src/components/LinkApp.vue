@@ -14,7 +14,7 @@ enum AppView {
   None,
   URLShortener,
   QRGenerator,
-  TODO,
+  ChromeExtension,
 }
 const selectedView = ref<AppView>(AppView.URLShortener)
 
@@ -75,8 +75,9 @@ onMounted(() => {
           generator"
         />
       </button>
-      <button :disabled="selectedView === AppView.TODO" @mousedown="handleSetView(AppView.TODO)">
-        <img src="@/assets/todo.svg" alt="TODO icon" aria-label="Switch view to TODO" />
+      <button :disabled="selectedView === AppView.ChromeExtension"
+        @mousedown="handleSetView(AppView.ChromeExtension)">
+        <img src="@/assets/chrome.svg" alt="Chrome icon" aria-label="Switch view to chrome extension" />
       </button>
     </div>
 
@@ -100,9 +101,9 @@ onMounted(() => {
       <SavedQRCodes :qrCodes="savedQRCodes" />
     </section>
 
-    <!-- TODO -->
-    <section v-else-if="selectedView === AppView.TODO">
-      <h5>TODO</h5>
+    <!-- Chrome Extension -->
+    <section v-else-if="selectedView === AppView.ChromeExtension">
+      <h5>Chrome Extension</h5>
     </section>
   </div>
 </template>
