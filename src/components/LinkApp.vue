@@ -4,6 +4,7 @@ import SavedLinks from '@/components/SavedLinks.vue'
 import UrlShortener from '@/components/UrlShortener.vue'
 import QRCreator from '@/components/QRCreator.vue'
 import SavedQRCodes from '@/components/SavedQRCodes.vue'
+import ExtensionInfo from '@/components/ExtensionInfo.vue'
 import type { urlData } from '@/types/UrlTypes'
 import { updateChromeExtension } from '@/util/utilities'
 
@@ -75,9 +76,15 @@ onMounted(() => {
           generator"
         />
       </button>
-      <button :disabled="selectedView === AppView.ChromeExtension"
-        @mousedown="handleSetView(AppView.ChromeExtension)">
-        <img src="@/assets/chrome.svg" alt="Chrome icon" aria-label="Switch view to chrome extension" />
+      <button
+        :disabled="selectedView === AppView.ChromeExtension"
+        @mousedown="handleSetView(AppView.ChromeExtension)"
+      >
+        <img
+          src="@/assets/chrome.svg"
+          alt="Chrome icon"
+          aria-label="Switch view to chrome extension"
+        />
       </button>
     </div>
 
@@ -104,6 +111,7 @@ onMounted(() => {
     <!-- Chrome Extension -->
     <section v-else-if="selectedView === AppView.ChromeExtension">
       <h5>Chrome Extension</h5>
+      <ExtensionInfo />
     </section>
   </div>
 </template>
