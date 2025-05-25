@@ -34,6 +34,12 @@ const handleCreateQR = (base64ImageSrc: string) => {
   localStorage.setItem('savedQRCodes', JSON.stringify(savedQRCodes.value))
 }
 
+const handleDeleteLink = (index: number) => {
+  savedLinks.value.splice(index, 1)
+  localStorage.setItem('savedLinks', JSON.stringify(savedLinks.value))
+  updateChromeExtension(savedLinks.value)
+}
+
 onMounted(() => {
   const saved = localStorage.getItem('savedLinks')
   if (!saved) return
@@ -63,7 +69,11 @@ onMounted(() => {
         :disabled="selectedView === AppView.URLShortener"
         @mousedown="handleSetView(AppView.URLShortener)"
       >
-        <img src="@/assets/link.svg" alt="Link icon" aria-label="Switch view to url shortener" />
+        <img
+          src="@/assets/link.svg"
+          alt="Link icon"
+          aria-label="Switch view to url shortener"
+        />
       </button>
       <button
         :disabled="selectedView === AppView.QRGenerator"
@@ -98,7 +108,7 @@ onMounted(() => {
     <section v-else-if="selectedView === AppView.URLShortener" class="section-url-shortener">
       <h5>Url Shortener</h5>
       <UrlShortener @handleCreateLink="handleCreateLink" />
-      <SavedLinks :links="savedLinks" />
+      <SavedLinks :links="savedLinks" :handle-delete="handleDeleteLink" />
     </section>
 
     <!-- QR Creator -->

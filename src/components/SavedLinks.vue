@@ -4,13 +4,14 @@ import LinkHistoryCard from '@/components/LinkHistoryCard.vue'
 
 const props = defineProps<{
   links: urlData[]
+  handleDelete: (id: number) => void
 }>()
 </script>
 
 <template>
   <ul>
     <li v-for="(link, index) in props.links" :key="index">
-      <LinkHistoryCard :id="index" :linkData="link" />
+      <LinkHistoryCard :id="index" :linkData="link" :handle-delete="handleDelete" />
     </li>
   </ul>
 </template>
