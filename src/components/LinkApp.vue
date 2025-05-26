@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import SavedLinks from '@/components/SavedLinks.vue'
 import UrlShortener from '@/components/UrlShortener.vue'
 import QRCreator from '@/components/QRCreator.vue'
@@ -8,9 +8,6 @@ import ExtensionInfo from '@/components/ExtensionInfo.vue'
 import type { urlData } from '@/types/UrlTypes'
 import { updateChromeExtension } from '@/util/utilities'
 
-const savedLinks = ref<urlData[]>([])
-const savedQRCodes = ref<string[]>([])
-
 enum AppView {
   None,
   URLShortener,
@@ -18,6 +15,44 @@ enum AppView {
   ChromeExtension,
 }
 const selectedView = ref<AppView>(AppView.URLShortener)
+const savedLinks = ref<urlData[]>([])
+const savedQRCodes = ref<string[]>([])
+
+onMounted(() => {
+  const localStorageLinks = localStorage.getItem('savedLinks')
+  if (localStorageLinks) {
+    const links = JSON.parse(localStorageLinks)
+    savedLinks.value = links
+    if (window.chrome?.runtime) {
+      updateChromeExtension(links)
+    }
+  }
+
+  const localStorageQRCodes = localStorage.getItem('savedQRCodes')
+  if (localStorageQRCodes) {
+    const qrCodes = JSON.parse(localStorageQRCodes)
+    savedQRCodes.value = qrCodes
+  }
+})
+
+watch(
+  savedLinks,
+  (newLinks) => {
+    if (window.chrome?.runtime) {
+      updateChromeExtension(newLinks)
+    }
+    localStorage.setItem('savedLinks', JSON.stringify(newLinks))
+  },
+  { deep: true },
+)
+
+watch(
+  savedQRCodes,
+  (newQRCodes) => {
+    localStorage.setItem('savedQRCodes', JSON.stringify(newQRCodes))
+  },
+  { deep: true },
+)
 
 const handleSetView = (view: AppView) => {
   selectedView.value = view
@@ -25,35 +60,15 @@ const handleSetView = (view: AppView) => {
 
 const handleCreateLink = (link: urlData) => {
   savedLinks.value.unshift(link)
-  localStorage.setItem('savedLinks', JSON.stringify(savedLinks.value))
-  updateChromeExtension(savedLinks.value)
 }
 
 const handleCreateQR = (base64ImageSrc: string) => {
   savedQRCodes.value.unshift(base64ImageSrc)
-  localStorage.setItem('savedQRCodes', JSON.stringify(savedQRCodes.value))
 }
 
-onMounted(() => {
-  const saved = localStorage.getItem('savedLinks')
-  if (!saved) return
-
-  const links = JSON.parse(saved)
-  savedLinks.value = links
-
-  const savedQRCodesRaw = localStorage.getItem('savedQRCodes')
-  if (!savedQRCodesRaw) return
-
-  const qrCodes = JSON.parse(savedQRCodesRaw)
-  savedQRCodes.value = qrCodes
-
-  // Update the content for the extention
-  if (window.chrome?.runtime) {
-    updateChromeExtension(links)
-  } else {
-    console.log('Chrome runtime is not available')
-  }
-})
+const handleDeleteLink = (index: number) => {
+  savedLinks.value.splice(index, 1)
+}
 </script>
 
 <template>
@@ -63,7 +78,12 @@ onMounted(() => {
         :disabled="selectedView === AppView.URLShortener"
         @mousedown="handleSetView(AppView.URLShortener)"
       >
-        <img src="@/assets/link.svg" alt="Link icon" aria-label="Switch view to url shortener" />
+        <img
+          src="@/assets/link.svg"
+          alt="Link icon"
+          aria-label="Switch view to url shortener"
+          draggable="false"
+        />
       </button>
       <button
         :disabled="selectedView === AppView.QRGenerator"
@@ -74,6 +94,7 @@ onMounted(() => {
           alt="QR code icon"
           aria-label="Switch view to qr code
           generator"
+          draggable="false"
         />
       </button>
       <button
@@ -84,6 +105,7 @@ onMounted(() => {
           src="@/assets/chrome.svg"
           alt="Chrome icon"
           aria-label="Switch view to chrome extension"
+          draggable="false"
         />
       </button>
     </div>
@@ -98,7 +120,7 @@ onMounted(() => {
     <section v-else-if="selectedView === AppView.URLShortener" class="section-url-shortener">
       <h5>Url Shortener</h5>
       <UrlShortener @handleCreateLink="handleCreateLink" />
-      <SavedLinks :links="savedLinks" />
+      <SavedLinks :links="savedLinks" :handle-delete="handleDeleteLink" />
     </section>
 
     <!-- QR Creator -->
