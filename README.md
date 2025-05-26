@@ -7,7 +7,7 @@
   <table>
     <tr>
       <td>
-        <img alt="url-shortner" src="./assets/url-shortener.jpg">
+        <img alt="url-shortner" src="./assets/url-shortener.png">
       </td>
       <td>
         <img alt="qr-generator" src="./assets/QR-generator.jpg">
