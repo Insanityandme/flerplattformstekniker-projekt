@@ -43,7 +43,7 @@
     flex-direction: column;
     align-items: center;
   }
-  .ext-img{
+  .ext-img {
     margin-bottom: 2rem;
   }
 }
