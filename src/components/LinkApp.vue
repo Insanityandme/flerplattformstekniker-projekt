@@ -12,7 +12,7 @@ enum AppView {
   None,
   URLShortener,
   QRGenerator,
-  ChromeExtension,
+  Extension,
 }
 const selectedView = ref<AppView>(AppView.URLShortener)
 const savedLinks = ref<urlData[]>([])
@@ -93,13 +93,13 @@ const handleDeleteLink = (index: number) => {
         />
       </button>
       <button
-        :disabled="selectedView === AppView.ChromeExtension"
-        @mousedown="handleSetView(AppView.ChromeExtension)"
+        :disabled="selectedView === AppView.Extension"
+        @mousedown="handleSetView(AppView.Extension)"
       >
         <img
-          src="@/assets/chrome.svg"
-          alt="Chrome icon"
-          aria-label="Switch view to chrome extension"
+          src="@/assets/extension.svg"
+          alt="Extension icon"
+          aria-label="Switch view to extension"
           draggable="false"
         />
       </button>
@@ -125,9 +125,9 @@ const handleDeleteLink = (index: number) => {
       <SavedQRCodes :qrCodes="savedQRCodes" />
     </section>
 
-    <!-- Chrome Extension -->
-    <section v-else-if="selectedView === AppView.ChromeExtension">
-      <h5>Chrome Extension</h5>
+    <!-- Extension -->
+    <section v-else-if="selectedView === AppView.Extension">
+      <h5>Extension Installation Guide</h5>
       <ExtensionInfo />
     </section>
   </div>
