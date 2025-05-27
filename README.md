@@ -28,9 +28,9 @@ The application uses LocalStorage to save previously shortened links locally in 
 
 ---
 
-### Chrome Extension
+### Browser Extension
 
-There is also a Chrome extension available for Url Toolbox, providing quick access to the URL Shortener directly from your browser toolbar. [Install guide](#extension-setup)
+There is also a Firefox and Chrome extension available for Url Toolbox, providing quick access to the URL Shortener directly from your browser toolbar. [Install guide](##extension-installation-guide)
 
   <table>
     <tr>
@@ -130,21 +130,44 @@ TypeScript cannot handle type information for `.vue` imports by default, so we r
 
 See [Vite Configuration Reference](https://vite.dev/config/).
 
-## Extension Setup
+---
+
+## Extension Installation Guide
 
 ### Prerequisites
 
-- **Url Toolbox** running at `http://localhost:5173`
-- A Chromium-based browser (e.g., Chrome, Brave)
+- **Url Toolbox** must be running at `http://localhost:5173`
 
 ---
 
-### Installation
+## Chrome / Brave
 
-1. [Download the latest `chrome-extension.crx`](https://github.com/Insanityandme/url-toolbox/releases) from the GitHub releases page.
-2. Open your browser’s extensions page:
+### Installation Steps
+
+1. [Download the latest `chrome-extension.zip`](https://github.com/Insanityandme/url-toolbox/releases) from the GitHub releases page.
+2. Unzip the file to a folder on your computer.
+3. Open your browser’s extensions page:
+
    - `chrome://extensions/` (for Chrome)
    - `brave://extensions/` (for Brave)
-3. Enable **Developer mode** (top right).
-4. Drag and drop the `.crx` file onto the page.
-5. Click **“Add Extension”** when prompted.
+
+4. Enable **Developer mode** (toggle in the top-right).
+5. Click **"Load unpacked"** and select the unzipped folder.
+6. Go to `http://localhost:5173` and refresh the page to activate the extension.
+
+---
+
+## Firefox
+
+### Installation Steps
+
+1. [Download the latest `firefox-extension.zip`](https://github.com/Insanityandme/url-toolbox/releases) from the GitHub releases page.
+2. Unzip the file to a folder on your computer.
+3. Open `about:debugging#/runtime/this-firefox` in Firefox.
+4. Click **"Load Temporary Add-on"**.
+5. Select the `manifest.json` file from inside the unzipped folder.
+6. Go to `http://localhost:5173` and refresh the page to activate the extension.
+
+> Note: This install is temporary because the extension isn’t signed by Firefox Add-ons (AMO). Firefox removes unsigned extensions when the browser closes.
+
+---
