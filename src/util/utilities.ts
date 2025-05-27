@@ -6,17 +6,14 @@ export function debounce<T extends (...args: unknown[]) => void>(fn: T, delay: n
   } as T
 }
 
-export function updateChromeExtension(links: unknown[]) {
-  const extensionId = 'dffhkpjammkicoldkcfkhmjpjhkoojlm'
-
-  if (window.chrome?.runtime?.sendMessage) {
-    window.chrome.runtime.sendMessage(
-      extensionId,
-      { type: 'save-links', links },
-      undefined,
-      (response) => {
-        console.log('Response from extension:', response)
-      },
-    )
-  }
+export function updateExtension(links: unknown[]) {
+  console.log("updateExtension")
+  const jsonLinks = JSON.parse(JSON.stringify(links))
+  window.postMessage(
+    {
+      fromPage: true,
+      message: { type: 'UPDATE_EXTENSION_DATA', data: jsonLinks },
+    },
+    '*',
+  )
 }

@@ -1,4 +1,6 @@
-chrome.storage.local.get(['links']).then((result) => {
+const storage = (typeof browser !== 'undefined') ? browser.storage : chrome.storage;
+
+storage.local.get(['links']).then((result) => {
   const links = result.links || []
   links.forEach((link) => {
 

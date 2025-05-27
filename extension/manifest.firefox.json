@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "url-toolbox",
+  "version": "1.0",
+  "description": "A Firefox extension for url-toolbox",
+  "permissions": ["storage"],
+  "background": {
+    "scripts": ["background/background.js"],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://localhost:5173/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": "icons/icon.png"
+  }
+}

@@ -6,7 +6,7 @@ import QRCreator from '@/components/QRCreator.vue'
 import SavedQRCodes from '@/components/SavedQRCodes.vue'
 import ExtensionInfo from '@/components/ExtensionInfo.vue'
 import type { urlData } from '@/types/UrlTypes'
-import { updateChromeExtension } from '@/util/utilities'
+import { updateExtension } from '@/util/utilities'
 
 enum AppView {
   None,
@@ -23,9 +23,6 @@ onMounted(() => {
   if (localStorageLinks) {
     const links = JSON.parse(localStorageLinks)
     savedLinks.value = links
-    if (window.chrome?.runtime) {
-      updateChromeExtension(links)
-    }
   }
 
   const localStorageQRCodes = localStorage.getItem('savedQRCodes')
@@ -38,9 +35,7 @@ onMounted(() => {
 watch(
   savedLinks,
   (newLinks) => {
-    if (window.chrome?.runtime) {
-      updateChromeExtension(newLinks)
-    }
+    updateExtension(newLinks)
     localStorage.setItem('savedLinks', JSON.stringify(newLinks))
   },
   { deep: true },
