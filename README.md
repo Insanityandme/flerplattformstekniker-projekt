@@ -20,7 +20,7 @@
 
 - **URL Shortener**: Shorten the length of their URLs. Users can also customize the shortened link with their own alias, making the link more personal and easier to remember.
 - **QR Generator**: Generate unique QR codes with its own color and logo.
-- **Chrome extension**: Provides quick access to the URL Shortener from your browser toolbar.
+- **Extensions**: Provides quick access to the URL Shortener from your browser toolbar.
 
 The application is built with Vue 3, which enables a component-based architecture. It is responsive, making it usable on mobile devices, tablets, and desktops.
 
