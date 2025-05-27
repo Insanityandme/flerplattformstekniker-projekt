@@ -57,23 +57,11 @@
 </template>
 
 <style scoped>
-.ext-container {
-  width: 100%;
-  margin-top: 2rem;
-  display: flex;
+#prerequisites {
+  margin-top: 1rem;
 }
-
-.ext-img {
-  max-width: 100%;
-  height: auto;
-}
-@media (max-width: 880px) {
-  .ext-container {
-    flex-direction: column;
-    align-items: center;
-  }
-  .ext-img {
-    margin-bottom: 2rem;
-  }
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 </style>
