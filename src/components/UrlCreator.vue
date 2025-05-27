@@ -12,7 +12,6 @@ const errors = ref<string[] | undefined>()
 async function handleSubmit() {
   errors.value = []
   const response: urlResponse = await createShortUrl(url.value, alias.value)
-  console.log(response)
 
   if (!response.ok) {
     const error: urlError | undefined = response.error

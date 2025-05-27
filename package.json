@@ -10,7 +10,9 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "build:chrome": "cp extension/manifest.chrome.json extension/manifest.json && mkdir -p dist/extension/chrome && (cd extension && zip -r ../chrome-extension.zip .) && mv chrome-extension.zip dist/extension/chrome/",
+    "build:firefox": "cp extension/manifest.firefox.json extension/manifest.json && mkdir -p dist/extension/firefox && (cd extension && zip -r ../firefox-extension.zip .) && mv firefox-extension.zip dist/extension/firefox/"
   },
   "dependencies": {
     "qrcode-with-logos": "^1.1.1",
