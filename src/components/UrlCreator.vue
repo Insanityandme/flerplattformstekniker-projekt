@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { createShortUrl } from '@/api/UrlService.ts'
 import type { urlResponse, urlError } from '@/types/UrlTypes'
 
-const emit = defineEmits(['handleURLShorten'])
+const emit = defineEmits(['handleCreateLink'])
 
 const url = ref('')
 const alias = ref('')
@@ -22,7 +22,7 @@ async function handleSubmit() {
   }
 
   if (response.data) {
-    emit('handleURLShorten', response.data)
+    emit('handleCreateLink', response.data)
   }
 }
 </script>
