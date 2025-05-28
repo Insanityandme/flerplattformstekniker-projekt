@@ -6,7 +6,7 @@ import SavedQRCodes from '@/components/SavedQRCodes.vue'
 import ExtensionInfo from '@/components/ExtensionInfo.vue'
 import type { urlData } from '@/types/UrlTypes'
 import { updateExtension } from '@/util/utilities'
-import UrlCreator from './UrlCreator.vue'
+import UrlCreator from '@/components/UrlCreator.vue'
 
 enum AppView {
   None,
