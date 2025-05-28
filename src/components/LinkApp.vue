@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref, onMounted, watch } from 'vue'
 import SavedLinks from '@/components/SavedLinks.vue'
-import UrlShortener from '@/components/UrlShortener.vue'
 import QRCreator from '@/components/QRCreator.vue'
 import SavedQRCodes from '@/components/SavedQRCodes.vue'
 import ExtensionInfo from '@/components/ExtensionInfo.vue'
 import type { urlData } from '@/types/UrlTypes'
 import { updateExtension } from '@/util/utilities'
+import UrlCreator from './UrlCreator.vue'
 
 enum AppView {
   None,
@@ -114,7 +114,7 @@ const handleDeleteLink = (index: number) => {
     <!-- URL Shortener -->
     <section v-else-if="selectedView === AppView.URLShortener" class="section-url-shortener">
       <h5>Url Shortener</h5>
-      <UrlShortener @handleCreateLink="handleCreateLink" />
+      <UrlCreator @handleCreateLink="handleCreateLink" />
       <SavedLinks :links="savedLinks" :handle-delete="handleDeleteLink" />
     </section>
 
