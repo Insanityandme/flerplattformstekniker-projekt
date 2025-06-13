@@ -99,7 +99,17 @@ Source: https://www.orientsoftware.com/blog/angular-vs-vue/
 
 - [Git](https://git-scm.com) version >= 2.13
 - [Node.js](https://nodejs.org) version >= 22
+- [TinyURL API Token](https://tinyurl.com/app/dev)
 
+---
+
+1. Rename the file "sample.env" to ".env.local":
+```sh
+mv sample.env .env.local
+```
+2. Get an API key from [TinyURL](https://tinyurl.com/app/dev)
+3. Set the value "VITE_TINYURL_TOKEN" in the ".env.local" file to the API key from TinyUrl
+4. Install dependencies with:
 ```sh
 npm install
 ```
